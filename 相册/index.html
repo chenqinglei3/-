@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>魏泽旗相册</title>
+  <style>
+    body {
+      background-color: #000;
+      /* 视距，使子元素获得视距效果 */
+      perspective: 900px;
+    }
+
+    section {
+      margin: 20vh auto;
+      position: relative;
+      width: 200px;
+      height: 200px;
+      /* 开启3D空间 */
+      transform-style: preserve-3d;
+      /* 动画：动画名 一次动画时间 平稳 无限循环 */
+      animation: rotate 20s linear infinite;
+    }
+
+    section:hover {
+      /* 当鼠标移上去动画暂停 */
+      animation-play-state: paused;
+    }
+
+    section img {
+      width: 100%;
+      height: 100%;
+      /* 设置定位，先将图片都放在同一位置 */
+      position: absolute;
+      left: 0;
+      top: 0;
+      /* 倒影，下方 距离5px 线性渐变（旋转木马专用） */
+      /* -webkit-box-reflect: below 5px -webkit-linear-gradient(transparent 50%, rgba(255, 255, 255, 0.3)); */
+    }
+
+    /* 3D 盒子相册 */
+    /* 让第一个img子元素竖直旋转0度，向外推100px（因为盒子边长200px），其他同理 */
+    section img:nth-child(1) {
+      transform: rotateY(0deg) translateZ(100px);
+    }
+
+    section img:nth-child(2) {
+      transform: rotateY(90deg) translateZ(100px);
+    }
+
+    section img:nth-child(3) {
+      transform: rotateY(180deg) translateZ(100px);
+    }
+
+    section img:nth-child(4) {
+      transform: rotateY(270deg) translateZ(100px);
+    }
+
+    section img:nth-child(5) {
+      transform: rotateX(90deg) translateZ(100px);
+    }
+
+    section img:nth-child(6) {
+      transform: rotateX(-90deg) translateZ(100px);
+    }
+
+    /* 设置动画帧，X和Y方向同时从0度转到360度 */
+    @keyframes rotate {
+      0% {
+        transform: rotateY(0deg) rotateX(0deg);
+      }
+
+      100% {
+        transform: rotateY(360deg) rotateX(360deg);
+      }
+    }
+
+    /* 旋转木马 */
+    /* section img:nth-child(1) {
+      transform: rotateY(0deg) translateZ(240px);
+    }
+
+    section img:nth-child(2) {
+      transform: rotateY(60deg) translateZ(240px);
+    }
+
+    section img:nth-child(3) {
+      transform: rotateY(120deg) translateZ(240px);
+    }
+
+    section img:nth-child(4) {
+      transform: rotateY(180deg) translateZ(240px);
+    }
+
+    section img:nth-child(5) {
+      transform: rotateY(240deg) translateZ(240px);
+    }
+
+    section img:nth-child(6) {
+      transform: rotateY(300deg) translateZ(240px);
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        transform: rotateY(360deg);
+      }
+    } */
+  </style>
+</head>
+
+<body>
+  <section>
+    <img src="./img/1.jpg" alt="">
+    <img src="./img/2.jpg" alt="">
+    <img src="./img/3.jpg" alt="">
+    <img src="./img/4.jpg" alt="">
+    <img src="./img/5.jpg" alt="">
+    <img src="./img/6.jpg" alt="">
+  </section>
+</body>
+
+</html>
